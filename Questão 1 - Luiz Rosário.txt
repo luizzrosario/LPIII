@@ -1,0 +1,44 @@
+modelo Lampada
+inicio do modelo 
+  	dado valorDaLampada, potenciaDaLampada, codigoDeBarras, descontoLampada;
+
+	operação registraCodigo(codigo) // registra codigo de barras
+		inicio
+			codigoDeBarras = codigo;
+		fim
+
+	operação registraValor(valor) // registra valor da lampada
+		inicio
+			valorDaLampada = valor;
+		fim
+
+	operação registraPotencia(potencia) // registra potencia da lampada 
+		inicio
+			potenciaDaLampada = potencia;
+		fim 
+
+	operação aplicaDesconto(desconto) // dá desconto na lampada
+		inicio
+			descontoLampada = desconto;
+		fim
+
+
+  	operação exibeDados() // exibe os dados
+    		inicio
+			imprime "Valor do item é:";
+			imprime valorDaLampada;
+			imprime "Potencia da lampada é:";
+			imprime potenciaDaLampada;
+			imprime "código de barras do item é:";
+        		imprime codigoDeBarras;
+			se (descontoLampada = 0)
+				imprime "não há desconto";
+			senão
+				imprime "a lampada tem desconto de:";
+				imprime descontoLampada;
+   		fim
+
+fim do modelo
+	
+  
+	  

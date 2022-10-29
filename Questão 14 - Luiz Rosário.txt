@@ -1,0 +1,44 @@
+modelo Retangulo
+inicio do modelo
+	dado x, y, i, j, retaMaior, retaMenor, areaDoRetangulo, perimetroDoRetangulo;
+
+	operação pegaPontos(cordX, cordY, cordI, cordJ) // pega coordenadas dos pontos e calcula retas.
+		inicio
+			x = cordX;
+			y = cordY;
+			i = cordI;
+			j = cordJ;
+			dado aux; //auxiliar
+
+			retaMaior = (x - i);
+ 			retaMenor = (y - i);
+
+			se(retaMaior < 0)
+				retaMaior * (-1);
+
+			se(retaMenor < 0)
+				retaMenor * (-1);
+
+			se(retaMenor > retaMaior)
+				aux = retaMenor;
+				retaMenor = retaMaior;
+				retaMaior = aux;
+		fim
+
+	operação calculaPerimetro()
+		inicio
+			perimetroDoRetangulo = ((retaMaior * 2) + (retaMenor * 2));
+			imprime "O perimetro do retangulo é:";
+			imprime perimetroDoRetangulo;
+		fim
+
+	operação calculaArea()
+		inicio
+			areaDoRetangulo = (retaMaior * retaMenor);
+			imprime "A area do retangulo é:";
+			imprime areaDoRetangulo;
+		fim	
+
+fim do modelo
+
+
