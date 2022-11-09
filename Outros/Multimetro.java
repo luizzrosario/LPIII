@@ -1,3 +1,4 @@
+package Outros;
 import java.util.Scanner;
 
 public class Multimetro {
