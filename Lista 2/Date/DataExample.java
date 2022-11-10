@@ -1,7 +1,16 @@
+package Date;
 public class DataExample {
     public static void main(String[] args) {
         Data data1 = new Data();
         String dataTemp;
+
+        data1.intializeData();
+
+        dataTemp = data1.imprimirData();
+
+        data1.intializeData();
+        
+        System.out.println(dataTemp);
 
         data1.setData(22, 9, 2003);
 
