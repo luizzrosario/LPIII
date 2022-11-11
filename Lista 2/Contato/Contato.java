@@ -5,14 +5,13 @@ import Date.Data;
 public class Contato {
     String nome, email;
     int telefone;
-    Data dataNascimento;
+    Data dataNascimento = new Data();
 
     public void intializeContato() {
-        dataNascimento.intializeData();
         setNome(" ");
         setTelefone(0);
         setEmail(" ");
-        setDataNascimento(dataNascimento);
+        dataNascimento.intializeData();
     }
 
     public String getNome() {
@@ -53,5 +52,29 @@ public class Contato {
         this.telefone = telefone;
         this.email = email;
         dataNascimento.setData(data.getDia(), data.getMes(), data.getAno());
+    }
+
+    public void imprimirContato() {
+        System.out.println("Nome: " + nome + "\nTelefone: " + telefone + "\nEmail: " + email + "\nData de Nascimento:"
+                + dataNascimento.imprimirDataS());
+    }
+
+    public int calcularIdade(Data hoje) {
+        int idade = 0;
+
+        int dia = hoje.getDia();
+        int mes = hoje.getMes();
+        int ano = hoje.getAno();
+
+        int hojeInt = (dia + (mes * 30) + (ano * 365));
+
+        int dataNascimentoInt = (dataNascimento.getDia() + (dataNascimento.getMes() * 30)
+                + (dataNascimento.getAno() * 365));
+
+        int idadeInt = hojeInt - dataNascimentoInt;
+
+        idade = (idadeInt / 365);
+
+        return idade;
     }
 }
