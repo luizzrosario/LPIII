@@ -6,6 +6,7 @@ public class DataExample {
         Data data2 = new Data();
         Data data3 = new Data();
         String dataTemp;
+        int dias;
 
         // imprimindo iniciado
         data1.intializeData();
@@ -37,5 +38,11 @@ public class DataExample {
         data3.dataWithConstructor(data2);
         dataTemp = data3.imprimirData();
         System.out.println(dataTemp);
+
+        dias = data1.howManyDays(data2);
+        System.out.println("Quantos dias (objeto Data): "+dias);
+
+        dias = data1.howManyDays(22, 9, 2000);
+        System.out.println("Quantos dias (3 int): "+dias);
     }
 }

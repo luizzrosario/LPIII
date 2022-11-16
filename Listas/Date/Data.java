@@ -4,26 +4,25 @@ public class Data {
     private int dia, mes, ano;
     private String meses[] = { "janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro",
             "outubro", "novembro", "dezembro" };
-            
 
-    public void dataWithConstructor(int dia, int mes, int ano){
+    public void dataWithConstructor(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
     }
 
-    public void dataWithConstructor(){
+    public void dataWithConstructor() {
         this.dia = 1;
         this.mes = 1;
         this.ano = 1970;
     }
 
-    public void dataWithConstructor(Data data1){
+    public void dataWithConstructor(Data data1) {
         this.dia = data1.getDia();
         this.mes = data1.getMes();
         this.ano = data1.getAno();
     }
-        
+
     public void intializeData() {
         if ((dia == 0) || (mes == 0) || (ano == 0)) {
             setData(01, 01, 1900);
@@ -97,7 +96,7 @@ public class Data {
         return dataString;
     }
 
-    public boolean isPrevious(Data data1){
+    public boolean isPrevious(Data data1) {
         int dia = data1.getDia();
         int mes = data1.getMes();
         int ano = data1.getAno();
@@ -107,11 +106,36 @@ public class Data {
         int dataInt = (this.dia + (this.mes * 30)
                 + (this.ano * 365));
 
-        if(data1Int < dataInt){
+        if (data1Int < dataInt) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
+    }
+
+    public int howManyDays(Data data1) {
+        int dia = data1.getDia();
+        int mes = data1.getMes();
+        int ano = data1.getAno();
+
+        int data1Int = (dia + (mes * 30) + (ano * 365));
+
+        int dataInt = (this.dia + (this.mes * 30)
+                + (this.ano * 365));
+
+        return (data1Int - dataInt);
+    }
+
+    public int howManyDays(int d, int m, int a) {
+        int dia = d;
+        int mes = m;
+        int ano = a;
+
+        int data1Int = (dia + (mes * 30) + (ano * 365));
+
+        int dataInt = (this.dia + (this.mes * 30)
+                + (this.ano * 365));
+
+        return (data1Int - dataInt);
     }
 }
