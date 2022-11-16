@@ -1,6 +1,6 @@
-package Contato;
+package Listas.Contato;
 
-import Date.Data;
+import Listas.Date.Data;
 
 public class ContatoExample {
     public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class ContatoExample {
         contato1.imprimirContato();
 
         System.out.println();
-        System.out.println("@===Contato Definindo===@");
+        System.out.println("@===Contato Definido===@");
         contato1.setContato("Luiz", 988376003, "luiz@gmail.com", data1);
         contato1.imprimirContato();
 

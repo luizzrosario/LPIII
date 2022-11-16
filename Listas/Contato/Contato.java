@@ -1,11 +1,11 @@
-package Contato;
+package Listas.Contato;
 
-import Date.Data;
+import Listas.Date.Data;
 
 public class Contato {
-    String nome, email;
-    int telefone;
-    Data dataNascimento = new Data();
+    private String nome, email;
+    private int telefone;
+    private Data dataNascimento = new Data();
 
     public void intializeContato() {
         setNome(" ");
