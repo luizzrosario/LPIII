@@ -4,12 +4,22 @@ public class Contato {
     private String nome, email;
     private int telefone;
     private Data dataNascimento = new Data();
+    private static int contador = 0;
 
-    public void intializeContato() {
+    public Contato(String nome, int telefone, String email, int dia, int mes, int ano) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        dataNascimento.setData(dia, mes, ano);
+        contador++;
+    }
+
+    public Contato() {
         setNome(" ");
         setTelefone(0);
         setEmail(" ");
         dataNascimento.intializeData();
+        contador++;
     }
 
     public String getNome() {
@@ -45,16 +55,9 @@ public class Contato {
         this.email = email;
     }
 
-    public void setContato(String nome, int telefone, String email, Data data) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        dataNascimento.setData(data.getDia(), data.getMes(), data.getAno());
-    }
-
     public void imprimirContato() {
         System.out.println("Nome: " + nome + "\nTelefone: " + telefone + "\nEmail: " + email + "\nData de Nascimento:"
-                + dataNascimento.imprimirDataS());
+                + dataNascimento.imprimirDataS() + "\nContatos da agenda: " + contador);
     }
 
     public int calcularIdade(Data hoje) {
@@ -74,5 +77,9 @@ public class Contato {
         idade = (idadeInt / 365);
 
         return idade;
+    }
+
+    public void imprimirContagem() {
+        System.out.println("Numero de contatos na agenda: " + contador);
     }
 }
