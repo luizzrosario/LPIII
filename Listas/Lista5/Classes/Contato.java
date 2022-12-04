@@ -79,7 +79,8 @@ public class Contato {
         return idade;
     }
 
-    public void imprimirContagem() {
+    public static void imprimirContagem() {
         System.out.println("Numero de contatos na agenda: " + contador);
     }
+
 }
