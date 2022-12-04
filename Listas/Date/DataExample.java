@@ -26,7 +26,7 @@ public class DataExample {
         System.out.println(dataTemp);
 
         // usando com construtor (não passa pror verificação)
-        data2.dataWithConstructor(14, 5, 1800);
+        data2.setData(14, 5, 1800);
 
         // vendo se é anterior
         if (data1.isPrevious(data2)) {
@@ -35,7 +35,7 @@ public class DataExample {
 
         // data com construtor ussando outra data
         // data3.dataWithConstructor(); (outra alternativa)
-        data3.dataWithConstructor(data2);
+        data3.setData(data2);;
         dataTemp = data3.imprimirData();
         System.out.println(dataTemp);
 
