@@ -1,6 +1,5 @@
-package Listas.Contato;
-
-import Listas.Date.Data;
+package contato;
+import date.Data;
 
 public class ContatoExample {
     public static void main(String[] args) {

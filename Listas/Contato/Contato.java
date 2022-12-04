@@ -1,6 +1,5 @@
-package Listas.Contato;
-
-import Listas.Date.Data;
+package contato;
+import date.Data;
 
 public class Contato {
     private String nome, email;
