@@ -5,19 +5,19 @@ public class Data {
     private String meses[] = { "janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro",
             "outubro", "novembro", "dezembro" };
 
-    public void dataWithConstructor(int dia, int mes, int ano) {
+    public Data(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
     }
 
-    public void dataWithConstructor() {
+    public Data() {
         this.dia = 1;
         this.mes = 1;
         this.ano = 1970;
     }
 
-    public void dataWithConstructor(Data data1) {
+    public Data(Data data1) {
         this.dia = data1.getDia();
         this.mes = data1.getMes();
         this.ano = data1.getAno();
@@ -150,5 +150,19 @@ public class Data {
                 + (this.ano * 365));
 
         return (data1Int - dataInt);
+    }
+
+    public static int howManyDaysUndilEndYear(Data d){
+
+        return d.howManyDays(30, 12, d.getAno());
+    }
+
+    public boolean isBissexto(){
+        if(this.getAno() % 4 == 0){
+            if((this.getAno() % 100 != 0) || (this.getAno() % 400 == 0)){
+                return true;
+            }
+        }
+        return false;
     }
 }
