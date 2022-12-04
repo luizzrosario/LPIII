@@ -1,5 +1,4 @@
-package Listas.Date;
-
+package date;
 public class Data {
     private int dia, mes, ano;
     private String meses[] = { "janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro",
@@ -78,6 +77,19 @@ public class Data {
             this.dia = dia;
             this.mes = mes;
             this.ano = ano;
+        } else {
+            this.dia = 0;
+            this.mes = 0;
+            this.ano = 0;
+        }
+        return;
+    }
+
+    public void setData(Data data1) {
+        if (validateData(dia, mes, ano)) {
+            this.dia = data1.getDia();
+            this.mes = data1.getMes();
+            this.ano = data1.getAno();
         } else {
             this.dia = 0;
             this.mes = 0;
