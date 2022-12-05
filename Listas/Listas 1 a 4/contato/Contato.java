@@ -1,4 +1,5 @@
 package contato;
+
 import date.Data;
 
 public class Contato {

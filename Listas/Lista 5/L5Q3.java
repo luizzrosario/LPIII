@@ -1,7 +1,7 @@
 import Classes.Data;
 
-public class Q3 {
-    public static void main(String [] args) {
+public class L5Q3 {
+    public static void main(String[] args) {
         int diasFaltando;
         String aux;
 
@@ -17,10 +17,9 @@ public class Q3 {
         aux = data1.imprimirDataS();
         System.out.println(aux);
 
-        if(data1.isBissexto()){
+        if (data1.isBissexto()) {
             System.out.println("Bissexto!");
-        }
-        else{
+        } else {
             System.out.println("Não bissexto.");
         }
     }

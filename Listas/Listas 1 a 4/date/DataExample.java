@@ -35,14 +35,15 @@ public class DataExample {
 
         // data com construtor ussando outra data
         // data3.dataWithConstructor(); (outra alternativa)
-        data3.setData(data2);;
+        data3.setData(data2);
+        ;
         dataTemp = data3.imprimirData();
         System.out.println(dataTemp);
 
         dias = data1.howManyDays(data2);
-        System.out.println("Quantos dias (objeto Data): "+dias);
+        System.out.println("Quantos dias (objeto Data): " + dias);
 
         dias = data1.howManyDays(22, 9, 2000);
-        System.out.println("Quantos dias (3 int): "+dias);
+        System.out.println("Quantos dias (3 int): " + dias);
     }
 }

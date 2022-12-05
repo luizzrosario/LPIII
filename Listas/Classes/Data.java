@@ -109,10 +109,8 @@ public class Data {
         return dataString;
     }
 
-    public static int dataInInt(Data data){
-        int dataInt = (data.dia + (data.mes * 30)
-        + (data.ano * 365));
-        return dataInt;
+    public void imprimirDataTela() {
+        System.out.println(this.imprimirDataS());
     }
 
     public boolean isPrevious(Data data1) {
@@ -130,6 +128,11 @@ public class Data {
         } else {
             return false;
         }
+    }
+
+    public static int dataInInt(Data data) {
+        return ((data.dia + (data.mes * 30)
+                + (data.ano * 365)));
     }
 
     public int howManyDays(Data data1) {
@@ -159,6 +162,7 @@ public class Data {
     }
 
     public static int howManyDaysUndilEndYear(Data d) {
+
         return d.howManyDays(30, 12, d.getAno());
     }
 

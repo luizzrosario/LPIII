@@ -3,14 +3,22 @@ package Classes;
 public class Contato {
     private String nome, email;
     private int telefone;
-    private Data dataNascimento = new Data();
+    private Data dataNascimento;
     private static int contador = 0;
 
     public Contato(String nome, int telefone, String email, int dia, int mes, int ano) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        dataNascimento.setData(dia, mes, ano);
+        this.dataNascimento = new Data(dia, mes, ano);
+        contador++;
+    }
+
+    public Contato(String nome, int telefone, String email) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.dataNascimento = new Data();
         contador++;
     }
 

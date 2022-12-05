@@ -1,6 +1,6 @@
 import Classes.Ponto;
 
-public class Q4 {
+public class L5Q4 {
     public static void main(String[] args) {
         Ponto ponto1 = new Ponto(-1, -5);
         Ponto ponto2 = new Ponto(6, 8);
