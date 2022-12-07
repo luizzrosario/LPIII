@@ -49,4 +49,9 @@ public class Ponto {
             return 3;
         }
     }
+
+    
+    public String imprimePonto(){
+        return "("+ x + ", " + y + ")";
+    }
 }
