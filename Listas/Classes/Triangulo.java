@@ -21,8 +21,8 @@ public class Triangulo {
     }
 
     public String imprimeTriangulo() {
-        return "Este triangulo é formado pelos pontos:\n" + ponto1.imprimePonto() + "\n" + ponto2.imprimePonto() + "\n"
-                + ponto3.imprimePonto();
+        return "Este triangulo é formado pelos pontos:\n" + ponto1.toString() + "\n" + ponto2.toString() + "\n"
+                + ponto3.toString();
     }
 
     public boolean isIsoceles() {

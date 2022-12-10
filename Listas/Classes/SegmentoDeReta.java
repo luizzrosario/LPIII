@@ -16,6 +16,6 @@ public class SegmentoDeReta {
     }
 
     public String imprimeSegmento(){
-        return "A reta começa em: " + pontoIni.imprimePonto() + "\nTemina em: " + pontoFin.imprimePonto() + "\nE tem dimensão: " + dimensao; 
+        return "A reta começa em: " + pontoIni.toString() + "\nTemina em: " + pontoFin.toString() + "\nE tem dimensão: " + dimensao; 
     }
 }

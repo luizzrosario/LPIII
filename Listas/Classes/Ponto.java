@@ -25,6 +25,11 @@ public class Ponto {
                 (p2.getY() - p1.getY()) * (p2.getY() - p1.getY())));
     }
 
+    public double distanceFrom(Ponto p1) {
+        return (Math.sqrt((this.x - p1.getX()) * (this.x - p1.getX()) +
+                (this.y - p1.getY()) * (this.y - p1.getY())));
+    }
+
     public static double distance(Ponto p1) {
         return (Math.sqrt((p1.getX()) * (p1.getX()) +
                 (p1.getY()) * (p1.getY())));
@@ -50,8 +55,35 @@ public class Ponto {
         }
     }
 
-    
-    public String imprimePonto(){
+    public String toString(){
         return "("+ x + ", " + y + ")";
+    }
+
+    public boolean isAxisX(){
+        if(x == 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAxisY(){
+        if(y == 0){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean isAxis(){
+        if(x == 0 || y==0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isOrigin(){
+        if(x == 0 && y==0){
+            return true;
+        }
+        return false;
     }
 }
