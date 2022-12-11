@@ -34,4 +34,11 @@ public class Livro {
     public String toString(){
         return "\nTítulo: " + titulo + "\nAutor: "+ autor +"\nNumero de Páginas: "+ numeroPag +"\nAno de publicação: "+ anoPubli;
     }
+
+    public boolean isOlder(Livro livro){
+        if(this.anoPubli < livro.getAnoPubli()){
+            return true;
+        }
+        return false;
+    }
 }

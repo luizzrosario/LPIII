@@ -2,37 +2,45 @@ package Classes;
 
 public class LivroBiblioteca extends Livro {
     private boolean emprestado;
-    private Data devolucaoData; 
+    private Data devolucaoData;
 
-    public LivroBiblioteca(String t, String a, int ano, int pag){
+    public LivroBiblioteca(String t, String a, int ano, int pag) {
         super(t, a, ano, pag);
         this.emprestado = false;
     }
-    public LivroBiblioteca(Livro livro){
+
+    public LivroBiblioteca(Livro livro) {
         super(livro);
         this.emprestado = false;
     }
 
-    public void borrow(Data data){
-        this.devolucaoData = new Data(data);
-        this.emprestado = true;
+    public void borrow(Data data) {
+        if (!emprestado) {
+            this.devolucaoData = new Data(data);
+            this.emprestado = true;
+        } else {
+            System.out.println("Já foi emprestado!");
+        }
     }
 
-    public void giveBack(){
+    public void giveBack() {
         this.emprestado = false;
     }
 
     @Override
-    public String toString(){
-        return super.toString() +"\n"+ this.isAvailable()+ "\nDia de Devolução: "+ devolucaoData.imprimirData();
+    public String toString() {
+        String string = "";
+        if (emprestado) {
+            string = "\nDia de Devolução: " + devolucaoData.imprimirData();
+        }
+        return super.toString() + "\n" + this.isAvailable() + string;
     }
 
-    public String isAvailable(){
-        if(emprestado){
+    public String isAvailable() {
+        if (emprestado) {
             return "Não está disponível.";
-        } else{
-            return "Está disponível.";
         }
+        return "Está disponível.";
     }
-    
+
 }
