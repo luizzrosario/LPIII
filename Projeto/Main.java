@@ -4,7 +4,7 @@ import Projeto.Classes.Exercicio;
 import Projeto.Classes.Maquina;
 import Projeto.Classes.Treino;
 //import Projeto.Estruturas.List;
-import Projeto.Estruturas.Queue;
+//import Projeto.Estruturas.Queue;
 
 public class Main {
     public static void main(String[] args) {

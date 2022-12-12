@@ -34,6 +34,7 @@ public class Treino {
     }
 
     public void printTreino(){
+        System.out.println("Treino: " + nomeDoTreino);
         treino.printList();
     }
 }
