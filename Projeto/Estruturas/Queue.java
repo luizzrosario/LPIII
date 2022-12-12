@@ -2,13 +2,14 @@ package Projeto.Estruturas;
 
 // Fila genérica herdada da lista encadeada
 public class Queue<T extends Comparable<T>> extends List<T> {
+
     //Construtores
     public Queue(T data){
         setRearList(data);
     }
 
     public Queue(){
-        setFrontList(null);
+        super();
     }
 
     // coloca um na fila
@@ -23,5 +24,10 @@ public class Queue<T extends Comparable<T>> extends List<T> {
             System.exit(-1);
         }
         return removeFront();
+    }
+
+    @Override
+    public String toString(){
+        return super.toString();
     }
 }

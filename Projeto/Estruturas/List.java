@@ -73,6 +73,7 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
             newNode.prev = tail;
             head.prev = newNode;
             tail.next = newNode;
+            tail = newNode;
             size++;
         }
     }
@@ -250,4 +251,19 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
         }
         printNode(this.head, this.head);
     }
+
+    public String toString(){
+        if(head == null)
+          return "Lista vazia!!";
+        else{
+          Node<T> currentNode = this.head;
+          String list = "";
+          while(currentNode.next != null){
+            list += currentNode + "\n";
+            currentNode = currentNode.next;
+          }
+          list += currentNode;
+          return list;
+        }
+      }
 }
