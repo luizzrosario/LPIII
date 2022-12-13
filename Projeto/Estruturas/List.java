@@ -170,25 +170,25 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
 
     // remove item na posição dita
     @Override
-    public T removeInPosition(int position) {
-        if (head == null) {
-            System.out.println("Lista vazia");
+    public T removeInPosition(int position){
+        if(head == null){
+            System.out.printf("Error in removeFront, list is empty!!\n\n");
             System.exit(-1);
         }
 
-        if ((position > size) || (position < 1)) {
-            System.out.println("Posição inválida!");
+        if((position > size) || (position < 1)){
+            System.out.printf("Error is removeInPosition, ivalid position!!\n");
             System.exit(-1);
         }
 
-        if (position == 1) {
+        if(position == 1){
             return removeFront();
-        } else if (position == size) {
+        }else if(position == size){
             return removeRear();
-        } else {
+        }else{
             Node<T> aux = head;
-
-            for (int i = 1; i < position; i++) {
+            
+            for(int i = 1; i < position; i++){
                 aux = aux.next;
             }
             T temp = aux.data;
@@ -196,7 +196,7 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
             aux.prev.next = aux.next;
             aux.next.prev = aux.prev;
             aux = null;
-            size--;
+            --size;
             return temp;
         }
     }
@@ -252,18 +252,18 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
         printNode(this.head, this.head);
     }
 
-    public String toString(){
-        if(head == null)
-          return "Lista vazia!!";
-        else{
-          Node<T> currentNode = this.head;
-          String list = "";
-          while(currentNode.next != null){
-            list += currentNode + "\n";
-            currentNode = currentNode.next;
-          }
-          list += currentNode;
-          return list;
+    public String toString() {
+        if (head == null)
+            return "Lista vazia!!";
+        else {
+            Node<T> currentNode = this.head;
+            String list = "";
+            while (currentNode.next != null) {
+                list += currentNode + "\n";
+                currentNode = currentNode.next;
+            }
+            list += currentNode;
+            return list + "size:" + size;
         }
-      }
+    }
 }

@@ -41,6 +41,6 @@ public class Maquina{
     }
 
     public String toString(){
-        return this.numero + " - " + this.nome + " || ";
+        return this.numero + " - " + this.nome + " | ";
     }
 }
