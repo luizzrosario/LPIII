@@ -1,18 +1,21 @@
 package Projeto.Estruturas;
 
-//Lista encadeada genérica
+//Lista encadeada genérica implementando uma interface
 public class List<T extends Comparable<T>> implements ListInterface<T> {
-    private int size = 0; // tamanho da lista
-    private Node<T> head; // primeiro item
-    private Node<T> tail; // ultimo item
+    // Tamanho da lista
+    private int size = 0;
+    // Primeiro item
+    private Node<T> head;
+    // Último item
+    private Node<T> tail;
 
-    // construtor da lista
+    // Construtor
     public List() {
         this.head = null;
         this.tail = null;
     }
 
-    // pegar tamanho da lista
+    // Pega tamanho da lista
     public int getSizeList() {
         return this.size;
     }
@@ -36,7 +39,7 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
         insertInPosition(d, position);
     }
 
-    // Insere um itm no começo da lista
+    // Insere um item no começo da lista
     private void insertFront(T data) {
         Node<T> newNode = new Node<T>(data);
 
@@ -61,7 +64,7 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
     private void insertRear(T data) {
         Node<T> newNode = new Node<T>(data);
 
-        // caso lista vazia
+        // Caso lista vazia
         if (this.head == null) {
             head = newNode;
             tail = newNode;
@@ -80,23 +83,23 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
 
     // Inserir em uma posição específica
     private void insertInPosition(T data, int position) {
-        // se a posição estiver fora do tamanho da lista
+        // Se a posição estiver fora do tamanho da lista
         if ((position > this.size) || (position < 1)) {
             System.out.printf("\nPosição inválida!\n");
             return;
         }
 
-        // se for logo no primeiro slot
+        // Se for logo no primeiro slot
         if (position == 1) {
             insertFront(data);
             return;
         }
-        // se for no ultimo slot
+        // Se for no ultimo slot
         else if (position == size) {
             insertRear(data);
             return;
         }
-        // outra posição
+        // Outra posição
         else {
             Node<T> newNode = new Node<T>(data);
             Node<T> aux = head;
@@ -113,17 +116,19 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
         }
     }
 
-    // remove primeiro
+    // Remove primeiro
     @Override
     public T removeFront() {
+        // Se estiver vazia
         if (head == null) {
             System.out.println("Lista vazia!");
             System.exit(-1);
         }
 
+        // T temporário
         T temp = head.data;
 
-        // só 1 na lista
+        // Só 1 na lista
         if (head == tail) {
             head = null;
             tail = null;
@@ -140,7 +145,7 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
         }
     }
 
-    // remove ultimo
+    // Remove ultimo
     @Override
     public T removeRear() {
         if (head == null) {
@@ -150,7 +155,7 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
 
         T temp = tail.data;
 
-        // se só tiver 1 na lista
+        // Se só tiver 1 na lista
         if (head == tail) {
             head = null;
             tail = null;
@@ -168,27 +173,27 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
         }
     }
 
-    // remove item na posição dita
+    // Remove item na posição dita
     @Override
-    public T removeInPosition(int position){
-        if(head == null){
+    public T removeInPosition(int position) {
+        if (head == null) {
             System.out.printf("Error in removeFront, list is empty!!\n\n");
             System.exit(-1);
         }
 
-        if((position > size) || (position < 1)){
+        if ((position > size) || (position < 1)) {
             System.out.printf("Error is removeInPosition, ivalid position!!\n");
             System.exit(-1);
         }
 
-        if(position == 1){
+        if (position == 1) {
             return removeFront();
-        }else if(position == size){
+        } else if (position == size) {
             return removeRear();
-        }else{
+        } else {
             Node<T> aux = head;
-            
-            for(int i = 1; i < position; i++){
+
+            for (int i = 1; i < position; i++) {
                 aux = aux.next;
             }
             T temp = aux.data;
@@ -201,7 +206,7 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
         }
     }
 
-    // remove um item específico
+    // Remove um item específico
     @Override
     public T removeItem(T d) {
         Node<T> item = findNode(head, d);
@@ -250,20 +255,5 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
             System.exit(-1);
         }
         printNode(this.head, this.head);
-    }
-
-    public String toString() {
-        if (head == null)
-            return "Lista vazia!!";
-        else {
-            Node<T> currentNode = this.head;
-            String list = "";
-            while (currentNode.next != null) {
-                list += currentNode + "\n";
-                currentNode = currentNode.next;
-            }
-            list += currentNode;
-            return list + "size:" + size;
-        }
     }
 }

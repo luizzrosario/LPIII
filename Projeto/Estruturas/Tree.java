@@ -5,7 +5,7 @@ public class Tree<T extends Comparable<T>> {
     private NodeTree<T> root;
     private int size;
 
-    // construtores
+    // Construtores
     public Tree() {
         root = null;
     }
@@ -14,9 +14,11 @@ public class Tree<T extends Comparable<T>> {
         insertTree(data);
     }
 
+    // Pegar a raíz
     public NodeTree<T> getRoot() {
         return root;
     }
+
     // Retorna tamanho da arvore
     public int getSizeTree() {
         return this.size;
@@ -47,7 +49,7 @@ public class Tree<T extends Comparable<T>> {
         }
     }
 
-    // inserir a esquerda
+    // Inserir a esquerda
     private void insertLeft(NodeTree<T> node, T i) {
         if (node.left == null) {
             NodeTree<T> newNode = new NodeTree<T>();
@@ -65,7 +67,7 @@ public class Tree<T extends Comparable<T>> {
         }
     }
 
-    // inserir a direita
+    // Inserir a direita
     private void insertRight(NodeTree<T> node, T i) {
         if (node.right == null) {
             NodeTree<T> newNode = new NodeTree<T>();
@@ -83,17 +85,96 @@ public class Tree<T extends Comparable<T>> {
         }
     }
 
-    // imprime arvore
+    // Imprime arvore
     public void printTreeAll() {
         printTree(root);
     }
 
-    // imprime os nós em ordem
+    // Imprime os nós em ordem
     private void printTree(NodeTree<T> root) {
         if (root != null) {
             printTree(root.left);
             System.out.println(root.data.toString());
             printTree(root.right);
         }
+    }
+
+    // Remove um nó específico
+    public void removeNode(T value) {
+        removeNode(this.root, value);
+    }
+
+    // Encontra nó
+    private NodeTree<T> findNode(NodeTree<T> currentNode, T value) {
+        if (currentNode == null) {
+            return null;
+        }
+        if (currentNode.getData().equals(value)) {
+            return currentNode;
+        }
+
+        NodeTree<T> nodeAux = new NodeTree<>();
+        nodeAux = findNode(currentNode.getLeft(), value);
+
+        if (nodeAux != null) {
+            return nodeAux;
+        }
+        return findNode(currentNode.getRight(), value);
+    }
+
+    // Se contém nele
+    public boolean contains(NodeTree<T> currentNode, T value) {
+        return !(findNode(currentNode, value) == null);
+    }
+
+    // Se é folha
+    private boolean isLeaf(NodeTree<T> currentNode) {
+        return (currentNode.getLeft() == null && currentNode.getRight() == null);
+    }
+
+    // Substituir valor
+    private T valueSubstitute(NodeTree<T> currentNode) {
+        if (currentNode.getRight() != null) {
+            return (valueSubstitute(currentNode.getRight()));
+        }
+        return currentNode.getData();
+    }
+
+    // Se tem 2 filhos
+    private boolean hasTwoChild(NodeTree<T> currentNode) {
+        return (currentNode.getLeft() != null && currentNode.getRight() != null);
+    }
+
+    // Se tem 1 filho
+    private boolean hasOneChild(NodeTree<T> currentNode) {
+        return (currentNode.getLeft() != null || currentNode.getRight() != null);
+    }
+
+    // Remove nó a partir da raiz
+    private NodeTree<T> removeNode(NodeTree<T> currentNode, T value) {
+        if (contains(currentNode, value)) {
+            if (currentNode.getData().compareTo(value) == 1) {
+                currentNode.setLeft(removeNode(currentNode.getLeft(), value));
+            } else if (currentNode.getData().compareTo(value) == -1) {
+                currentNode.setRight(removeNode(currentNode.getRight(), value));
+            } else {
+                if (isLeaf(currentNode)) {
+                    currentNode = null;
+                    return currentNode;
+                } else if (hasTwoChild(currentNode)) {
+                    T substituteValue = valueSubstitute(currentNode.getLeft());
+                    currentNode.setData(substituteValue);
+                    currentNode.setLeft(removeNode(currentNode.getLeft(), substituteValue));
+                } else if (hasOneChild(currentNode)) {
+                    if (currentNode.getLeft() == null) {
+                        return currentNode.getRight();
+                    } else if (currentNode.getRight() == null) {
+                        return currentNode.getLeft();
+                    }
+                }
+            }
+            return currentNode;
+        }
+        return null;
     }
 }

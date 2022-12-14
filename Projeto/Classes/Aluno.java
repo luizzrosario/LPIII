@@ -1,25 +1,47 @@
 package Projeto.Classes;
 
-import Projeto.Estruturas.List;
-
-// com treinos
-public class Aluno implements Comparable<Aluno>{
+// Classe aluno comparável
+public class Aluno implements Comparable<Aluno> {
+    // Atributos do aluno
     private String nome;
     private String email;
     private int cpf;
     private int telefone;
-    private static int contagem = 0;
+    // Contagem de treinos totais
     private int contagemTreino = 0;
-    private List<Treino> treinos = new List<Treino>();
+    // Vetor para armazenar os treinos (Max 7)
+    private Treino[] treinos = new Treino[7];
 
-    public Aluno(String nome, String email, int cpf, int telefone) {
+    // Construtores
+    public Aluno(String nome, int cpf, String email, int telefone) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
-        contagem++;
     }
 
+    public Aluno(String nome, int cpf, String email) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.telefone = 0;
+    }
+
+    public Aluno(String nome, int cpf, int telefone) {
+        this.nome = nome;
+        this.email = "Sem email";
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
+
+    public Aluno(String nome, int cpf) {
+        this.nome = nome;
+        this.email = "Sem email";
+        this.cpf = cpf;
+        this.telefone = 0;
+    }
+
+    // Getters
     public String getNome() {
         return nome;
     }
@@ -36,48 +58,60 @@ public class Aluno implements Comparable<Aluno>{
         return telefone;
     }
 
-    public static int getContagem() {
-        return contagem;
-    }
-
     public int getContagemTreino() {
         return contagemTreino;
     }
 
-    // adiciona um treino ao aluno
+    // Setters
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    // Adiciona um treino
     public void addTreino(Treino t) {
-        treinos.setRearList(t);
+        treinos[contagemTreino] = t;
+        contagemTreino++;
     }
 
-    // printa todos os treinos
+    // Printa todos os treinos
     public void printTreinos() {
-        for (int i = 0; i < (contagem + 1); i++) {
-            treinos.printList();
+        for (int i = 0; i < (contagemTreino); i++) {
+            treinos[i].printTreino();
         }
     }
 
-    // printa treino específico
+    // Printa um treino específico
     public void printTreino(int i) {
-        Treino temp;
-        temp = treinos.removeInPosition(i);
-        temp.printTreino();
-        treinos.setInPositionList(temp, i);
+        treinos[i - 1].printTreino();
     }
 
-    // comparable do aluno
+    // Comparable do aluno
     @Override
-    public int compareTo(Aluno a){
-        if(this.cpf == a.getCpf()){
+    public int compareTo(Aluno a) {
+        if (this.cpf == a.getCpf()) {
             return 0;
-        }
-        else if(this.cpf < a.getCpf()){
+        } else if (this.cpf < a.getCpf()) {
             return -1;
-        }else{
+        } else {
             return 1;
         }
     }
 
-    public String toString(){
-        return "Nome: " + this.nome + " | CPF: " + this.cpf + " | Telefone: " + this.telefone + " | Email: " + this.email;
+    // toString do aluno
+    public String toString() {
+        return "Nome: " + this.nome + " | CPF: " + this.cpf + " | Telefone: " + this.telefone + " | Email: "
+                + this.email;
     }
 }

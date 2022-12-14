@@ -1,46 +1,51 @@
 package Projeto.Classes;
 
-public class Maquina implements Comparable<Maquina>{
+// Classe Maquina comparável
+public class Maquina implements Comparable<Maquina> {
+    // Atributos
     private String nome;
-    private int numero;
-    private String tipo;
+    private int id;
+    private int tipo;
 
-    public Maquina(String nome, int numero, String tipo) {
+    // Construtores
+    public Maquina(String nome, int id, int tipo) {
         this.nome = nome;
-        this.numero = numero;
+        this.id = id;
         this.tipo = tipo;
     }
 
-    public Maquina(Maquina m){
+    public Maquina(Maquina m) {
         this.nome = m.getNome();
-        this.numero = m.getNumero();
+        this.id = m.getId();
         this.tipo = m.getTipo();
     }
 
+    // Getters
     public String getNome() {
         return nome;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getId() {
+        return id;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    // 0 para igual, -1 para maior e 1 para menor
+    // Compare maquina
     public int compareTo(Maquina maquina) {
-        if (maquina.getNumero() == this.numero) {
+        if (maquina.getId() == this.id) {
             return 0;
-        } else if (maquina.getNumero() < this.numero) {
+        } else if (maquina.getId() > this.id) {
             return -1;
         } else {
             return 1;
         }
     }
 
-    public String toString(){
-        return this.numero + " - " + this.nome + " | ";
+    // toString maquina
+    public String toString() {
+        return this.id + " - " + this.nome;
     }
 }

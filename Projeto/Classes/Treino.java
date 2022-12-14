@@ -1,52 +1,57 @@
 package Projeto.Classes;
 
+// Utiliza fila para organizar
 import Projeto.Estruturas.Queue;
 
-public class Treino implements Comparable<Treino>{
+// Classe treino
+public class Treino {
     private String nomeDoTreino;
-    Queue<Exercicio> treino = new Queue<Exercicio>();
     private int contagem = 0;
+    Queue<Exercicio> treino = new Queue<Exercicio>();
 
-    // construtor
+    // Construtor
     public Treino(String n) {
         this.nomeDoTreino = n;
     }
 
-    // Adiciona exercicio com um exercicio
+    // Adiciona exercício
     public void addExercicio(Exercicio e) {
         treino.enqueue(e);
         contagem++;
     }
 
-    // add com uma maquina + um novo exercício
+    // Sobrecarga
     public void addExercicio(Maquina m1, String n, int s, int r, double p) {
         Exercicio e = new Exercicio(m1, n, s, r, p);
         treino.enqueue(e);
         contagem++;
     }
 
-    // add com todos os dados
-    public void addExercicio(String nMaq, int idMaq, String tipo, int id, String n, int s, int r, double p) {
+    // Sobrecarga
+    public void addExercicio(String nMaq, int idMaq, int tipo, int id, String n, int s, int r, double p) {
         Maquina m1 = new Maquina(nMaq, idMaq, tipo);
         Exercicio e = new Exercicio(m1, n, s, r, p);
         treino.enqueue(e);
         contagem++;
     }
 
+    // Remove exercício do treino
     public Exercicio removeExercicio(Exercicio d) {
         contagem--;
         return treino.removeItem(d);
     }
 
-    public Exercicio removeExercicio(int i){
+    // Sobrecarga pra remover a partir da posição
+    public Exercicio removeExercicio(int i) {
         contagem--;
         return treino.removeInPosition(i);
     }
 
-    public double calculaVolume(){
+    // Método para calcular volume do treino
+    public double calculaVolume() {
         Exercicio temp;
         double volume = 0;
-        for(int i = 1; i <= contagem; i++){
+        for (int i = 1; i <= contagem; i++) {
             temp = treino.dequeue();
             volume += temp.getReps() * temp.getSets() * temp.getPeso();
             treino.enqueue(temp);
@@ -54,14 +59,9 @@ public class Treino implements Comparable<Treino>{
         return volume;
     }
 
-    public void printTreino(){
-        System.out.println("Treino: " + nomeDoTreino + " Volume total: " + calculaVolume());
+    // Imprime treino
+    public void printTreino() {
+        System.out.println("Treino: " + nomeDoTreino + " - Volume total: " + calculaVolume());
         treino.printList();
-    }
-
-    @Override
-    public int compareTo(Treino o) {
-        // TODO Auto-generated method stub
-        return 0;
     }
 }
