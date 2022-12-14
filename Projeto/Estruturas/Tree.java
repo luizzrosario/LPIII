@@ -14,6 +14,9 @@ public class Tree<T extends Comparable<T>> {
         insertTree(data);
     }
 
+    public NodeTree<T> getRoot() {
+        return root;
+    }
     // Retorna tamanho da arvore
     public int getSizeTree() {
         return this.size;

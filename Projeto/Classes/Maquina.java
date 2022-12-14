@@ -1,6 +1,6 @@
 package Projeto.Classes;
 
-public class Maquina{
+public class Maquina implements Comparable<Maquina>{
     private String nome;
     private int numero;
     private String tipo;

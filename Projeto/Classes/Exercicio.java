@@ -1,24 +1,18 @@
 package Projeto.Classes;
 
-public class Exercicio extends Maquina implements Comparable<Exercicio> {
-    private int idExercicio;
+public class Exercicio implements Comparable<Exercicio> {
     private String nomeExercicio;
     private int sets;
     private int reps;
     private double peso;
+    private Maquina maquina;
 
-    public Exercicio(Maquina m, int id, String ne, int sets, int reps, double peso) {
-        super(m);
-        this.idExercicio = id;
+    public Exercicio(Maquina m, String ne, int sets, int reps, double peso) {
+        this.maquina = new Maquina(m);
         this.nomeExercicio = ne;
         this.sets = sets;
         this.reps = reps;
         this.peso = peso;
-
-    }
-
-    public int getIdExercicio() {
-        return this.idExercicio;
     }
 
     public String getNomeExercicio() {
@@ -37,19 +31,17 @@ public class Exercicio extends Maquina implements Comparable<Exercicio> {
         return this.peso;
     }
 
+    public Maquina getMaquina() {
+        return this.maquina;
+    }
+
     @Override
     public int compareTo(Exercicio ex) {
-        if (this.idExercicio == ex.getIdExercicio()) {
-            return 0;
-        } else if (ex.getIdExercicio() < idExercicio) {
-            return -1;
-        } else {
-            return 1;
-        }
+        return this.maquina.compareTo(ex.getMaquina());
     }
 
     @Override
     public String toString() {
-        return super.toString() + this.nomeExercicio + " | Sets: " + this.sets + " - Reps: " + this.reps + " - Peso (kg): " + this.peso;
+        return maquina.toString() + this.nomeExercicio + " | Sets: " + this.sets + " - Reps: " + this.reps + " - Peso (kg): " + this.peso;
     }
 }

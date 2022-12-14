@@ -2,7 +2,7 @@ package Projeto.Classes;
 
 import Projeto.Estruturas.Queue;
 
-public class Treino {
+public class Treino implements Comparable<Treino>{
     private String nomeDoTreino;
     Queue<Exercicio> treino = new Queue<Exercicio>();
     private int contagem = 0;
@@ -19,8 +19,8 @@ public class Treino {
     }
 
     // add com uma maquina + um novo exercício
-    public void addExercicio(Maquina m1, int id, String n, int s, int r, double p) {
-        Exercicio e = new Exercicio(m1, id, n, s, r, p);
+    public void addExercicio(Maquina m1, String n, int s, int r, double p) {
+        Exercicio e = new Exercicio(m1, n, s, r, p);
         treino.enqueue(e);
         contagem++;
     }
@@ -28,7 +28,7 @@ public class Treino {
     // add com todos os dados
     public void addExercicio(String nMaq, int idMaq, String tipo, int id, String n, int s, int r, double p) {
         Maquina m1 = new Maquina(nMaq, idMaq, tipo);
-        Exercicio e = new Exercicio(m1, id, n, s, r, p);
+        Exercicio e = new Exercicio(m1, n, s, r, p);
         treino.enqueue(e);
         contagem++;
     }
@@ -49,7 +49,6 @@ public class Treino {
         for(int i = 1; i <= contagem; i++){
             temp = treino.dequeue();
             volume += temp.getReps() * temp.getSets() * temp.getPeso();
-            System.out.println(volume);
             treino.enqueue(temp);
         }
         return volume;
@@ -58,5 +57,11 @@ public class Treino {
     public void printTreino(){
         System.out.println("Treino: " + nomeDoTreino + " Volume total: " + calculaVolume());
         treino.printList();
+    }
+
+    @Override
+    public int compareTo(Treino o) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }
