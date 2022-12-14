@@ -21,9 +21,13 @@ public class Teste {
         Exercicio e3 = new Exercicio(m3, "pierna", 10, 10, 100);
         Exercicio e4 = new Exercicio(m4, "suehasue", 10, 10, 100);
         Aluno a = new Aluno("Luiz", 1234, "luiz@gmail.com", 123);
-        Aluno b = new Aluno("bruno", 1235, "luiz@gmail.com", 123);
+        Aluno b = new Aluno("bruna", 1235, "luiz@gmail.com", 123);
         Aluno c = new Aluno("carlos", 1236, "luiz@gmail.com", 123);
-        Aluno d = new Aluno("danilo", 1237, "luiz@gmail.com", 123);
+        Aluno d = new Aluno("daniela", 1237, "luiz@gmail.com", 123);
+        Aluno e = new Aluno("jose", 1238, "luiz@gmail.com", 123);
+        Aluno f = new Aluno("alberto", 1239, "luiz@gmail.com", 123);
+        Aluno g = new Aluno("marcos", 12310, "luiz@gmail.com", 123);
+        Aluno h = new Aluno("maria", 123723, "luiz@gmail.com", 123);
 
         t1.addExercicio(e1);
         t1.addExercicio(e3);
@@ -56,16 +60,22 @@ public class Teste {
         academia.addAluno(b);
         academia.addAluno(c);
         academia.addAluno(d);
+        academia.addAluno(e);
+        academia.addAluno(f);
+        academia.addAluno(g);
+        academia.addAluno(h);
         System.out.println();
         academia.printAlunos();
         System.out.println();
 
+        /* 
         academia.removeAluno(b);
         academia.printAlunos();
         System.out.println();
         academia.removeAluno(d);
         academia.printAlunos();
         System.out.println();
+        */
 
         academia.addMaquina(m1);
         academia.addMaquina(m2);
@@ -74,5 +84,13 @@ public class Teste {
         academia.printMaquinas();
 
         System.out.println(academia.toString());
+
+        System.out.println(academia.getAluno(1234));
+
+        academia.printTreinos(1234);
+
+        System.out.println("\n\n\n");
+
+        academia.printTreino(1234, 4);
     }
 }

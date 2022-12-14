@@ -64,9 +64,39 @@ public class Academia {
         alunos.removeNode(a);
     }
 
+    public void removeAluno(int cpf) {
+        Aluno a = new Aluno("temp", cpf);
+        alunos.removeNode(a);
+    }
+    
     // Remove maquina
     public void removeMaquina(Maquina m) {
         maquinas.removeNode(m);
+    }
+
+    public void removeMaquina(int id) {
+        Maquina m = new Maquina("temp", id, 0);
+        maquinas.removeNode(m);
+    }
+
+    // Pega aluno usando CPF
+    public Aluno getAluno(int cpf) {
+        Aluno a = new Aluno("temp", cpf);
+        return alunos.findNodeID(a);
+    }
+
+    // Pega maquina usando ID
+    public Maquina getMaquina(int id) {
+        Maquina m = new Maquina("temp", id, 0);
+        return maquinas.findNodeID(m);
+    }
+
+    public void printTreinos(int cpf){
+        getAluno(cpf).printTreinos();
+    }
+
+    public void printTreino(int cpf, int treino){
+        getAluno(cpf).printTreino(treino);
     }
 
     // toString para informações básicas da academia

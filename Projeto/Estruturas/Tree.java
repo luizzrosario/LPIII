@@ -122,6 +122,28 @@ public class Tree<T extends Comparable<T>> {
         return findNode(currentNode.getRight(), value);
     }
 
+    // Encontrar pelo ID (Comparable)
+    public T findNodeID(T value){
+        return findNodeID(this.root, value).getData();
+    }
+
+    private NodeTree<T> findNodeID(NodeTree<T> currentNode, T value) {
+        if (currentNode == null) {
+            return null;
+        }
+        if (currentNode.getData().compareTo(value) == 0) {
+            return currentNode;
+        }
+
+        NodeTree<T> nodeAux = new NodeTree<>();
+        nodeAux = findNode(currentNode.getLeft(), value);
+
+        if (nodeAux != null) {
+            return nodeAux;
+        }
+        return findNode(currentNode.getRight(), value);
+    }
+
     // Se contém nele
     public boolean contains(NodeTree<T> currentNode, T value) {
         return !(findNode(currentNode, value) == null);
