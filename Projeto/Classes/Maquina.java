@@ -1,14 +1,24 @@
 package Projeto.Classes;
 
+import java.io.Serializable;
+
 // Classe Maquina comparável
-public class Maquina implements Comparable<Maquina> {
+public class Maquina implements Comparable<Maquina>, Serializable {
     // Atributos
     private String nome;
     private int id;
-    private int tipo;
+    private String tipo;
+    private static int contagem = 0;
 
     // Construtores
-    public Maquina(String nome, int id, int tipo) {
+    public Maquina(String nome, String tipo) {
+        contagem++;
+        this.nome = nome;
+        this.id = contagem;
+        this.tipo = tipo;
+    }
+
+    public Maquina(String nome, int id, String tipo) {
         this.nome = nome;
         this.id = id;
         this.tipo = tipo;
@@ -16,8 +26,9 @@ public class Maquina implements Comparable<Maquina> {
 
     public Maquina(Maquina m) {
         this.nome = m.getNome();
-        this.id = m.getId();
+        this.id = contagem;
         this.tipo = m.getTipo();
+        contagem++;
     }
 
     // Getters
@@ -29,7 +40,7 @@ public class Maquina implements Comparable<Maquina> {
         return id;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
@@ -46,6 +57,6 @@ public class Maquina implements Comparable<Maquina> {
 
     // toString maquina
     public String toString() {
-        return this.id + " - " + this.nome;
+        return this.id + " - " + this.nome + " - " + this.tipo;
     }
 }

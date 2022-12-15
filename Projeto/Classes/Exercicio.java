@@ -1,7 +1,9 @@
 package Projeto.Classes;
 
+import java.io.Serializable;
+
 // Classe comparável exercício
-public class Exercicio implements Comparable<Exercicio> {
+public class Exercicio implements Comparable<Exercicio>, Serializable {
     // Atributos
     private String nomeExercicio;
     private int sets;
@@ -18,8 +20,8 @@ public class Exercicio implements Comparable<Exercicio> {
         this.peso = peso;
     }
 
-    public Exercicio(String nome, int id, int tipo, String nomeExercicio, int sets, int reps, double peso) {
-        this.maquina = new Maquina(nome, id, tipo);
+    public Exercicio(String nome, String tipo, String nomeExercicio, int sets, int reps, double peso) {
+        this.maquina = new Maquina(nome, tipo);
         this.nomeExercicio = nomeExercicio;
         this.sets = sets;
         this.reps = reps;

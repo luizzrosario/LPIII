@@ -1,10 +1,12 @@
 package Projeto.Classes;
 
+import java.io.Serializable;
+
 // Utiliza fila para organizar
 import Projeto.Estruturas.Queue;
 
 // Classe treino
-public class Treino {
+public class Treino implements Serializable {
     private String nomeDoTreino;
     private int contagem = 0;
     Queue<Exercicio> treino = new Queue<Exercicio>();
@@ -12,6 +14,10 @@ public class Treino {
     // Construtor
     public Treino(String n) {
         this.nomeDoTreino = n;
+    }
+
+    public String getNomeDoTreino() {
+        return nomeDoTreino;
     }
 
     // Adiciona exercício
@@ -28,8 +34,8 @@ public class Treino {
     }
 
     // Sobrecarga
-    public void addExercicio(String nMaq, int idMaq, int tipo, int id, String n, int s, int r, double p) {
-        Maquina m1 = new Maquina(nMaq, idMaq, tipo);
+    public void addExercicio(String nMaq, String tipo, int id, String n, int s, int r, double p) {
+        Maquina m1 = new Maquina(nMaq, tipo);
         Exercicio e = new Exercicio(m1, n, s, r, p);
         treino.enqueue(e);
         contagem++;

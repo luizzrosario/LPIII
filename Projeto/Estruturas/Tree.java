@@ -99,9 +99,15 @@ public class Tree<T extends Comparable<T>> {
         }
     }
 
+    public T getNode(T value) {
+        T temp = removeNode(value);
+        insertTree(temp);
+        return temp;
+    }
+
     // Remove um nó específico
-    public void removeNode(T value) {
-        removeNode(this.root, value);
+    public T removeNode(T value) {
+        return removeNode(this.root, value).getData();
     }
 
     // Encontra nó
@@ -123,25 +129,20 @@ public class Tree<T extends Comparable<T>> {
     }
 
     // Encontrar pelo ID (Comparable)
-    public T findNodeID(T value){
+    public T findNodeID(T value) {
         return findNodeID(this.root, value).getData();
     }
 
     private NodeTree<T> findNodeID(NodeTree<T> currentNode, T value) {
         if (currentNode == null) {
             return null;
-        }
-        if (currentNode.getData().compareTo(value) == 0) {
+        } else if (currentNode.getData().compareTo(value) == 0) {
             return currentNode;
+        } else if (currentNode.getData().compareTo(value) == 1) {
+            return findNode(currentNode.left, value);
+        } else {
+            return findNode(currentNode.getRight(), value);
         }
-
-        NodeTree<T> nodeAux = new NodeTree<>();
-        nodeAux = findNode(currentNode.getLeft(), value);
-
-        if (nodeAux != null) {
-            return nodeAux;
-        }
-        return findNode(currentNode.getRight(), value);
     }
 
     // Se contém nele

@@ -1,7 +1,9 @@
 package Projeto.Estruturas;
 
+import java.io.Serializable;
+
 //Lista encadeada genérica implementando uma interface
-public class List<T extends Comparable<T>> implements ListInterface<T> {
+public class List<T extends Comparable<T>> implements ListInterface<T>, Serializable {
     // Tamanho da lista
     private int size = 0;
     // Primeiro item
@@ -223,6 +225,10 @@ public class List<T extends Comparable<T>> implements ListInterface<T> {
             size--;
             return temp;
         }
+    }
+
+    public T findNode(T d) {
+        return findNode(head, d).data;
     }
 
     // Procura nó na lista (recursivo)

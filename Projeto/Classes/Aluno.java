@@ -1,7 +1,9 @@
 package Projeto.Classes;
 
+import java.io.Serializable;
+
 // Classe aluno comparável
-public class Aluno implements Comparable<Aluno> {
+public class Aluno implements Comparable<Aluno>, Serializable {
     // Atributos do aluno
     private String nome;
     private String email;
@@ -62,6 +64,14 @@ public class Aluno implements Comparable<Aluno> {
         return contagemTreino;
     }
 
+    public Treino[] getTreinos() {
+        return treinos;
+    }
+
+    public String getNomeTreinos(int i) {
+        return treinos[i].getNomeDoTreino();
+    }
+
     // Setters
     public void setNome(String nome) {
         this.nome = nome;
@@ -83,6 +93,11 @@ public class Aluno implements Comparable<Aluno> {
     public void addTreino(Treino t) {
         treinos[contagemTreino] = t;
         contagemTreino++;
+    }
+
+    // Adiciona exercício em um treino
+    public void addExercicioEm(Exercicio e, int t) {
+        treinos[t].addExercicio(e);
     }
 
     // Printa todos os treinos
