@@ -2,8 +2,6 @@ package Projeto.Classes;
 
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
-
 import Projeto.Estruturas.List;
 import Projeto.Estruturas.Tree;
 
@@ -69,6 +67,7 @@ public class Academia {
         alunos.removeItem(a);
     }
 
+    // Remove aluno por CPF
     public void removeAluno(int cpf) {
         alunos.removeItem(getAluno(cpf));
     }
@@ -90,10 +89,12 @@ public class Academia {
         return maquinas.findNodeID(m);
     }
 
+    // Printa treinos pelo CPF do aluno
     public void printTreinos(int cpf) {
         getAluno(cpf).printTreinos();
     }
 
+    // Printa treino específico por CPF do aluno
     public void printTreino(int cpf, int treino) {
         getAluno(cpf).printTreino(treino);
     }
@@ -104,31 +105,9 @@ public class Academia {
                 + "\nQuantia de máquinas: " + maquinas.getSizeTree();
     }
 
-    /*
-     * 
-     * public void saveFiles(){
-     * try{
-     * File file = new File("Alunos.txt");
-     * ObjectOutputStream oos = new ObjectOutputStream(new
-     * FileOutputStream("Projeto/Arquivos/" + file));
-     * oos.writeObject(alunos);
-     * 
-     * File file1 = new File("Maquinas.txt");
-     * ObjectOutputStream oos1 = new ObjectOutputStream(new
-     * FileOutputStream("Projeto/Arquivos/" + file1));
-     * 
-     * oos1.writeObject(maquinas);
-     * 
-     * oos1.close();
-     * oos.close();
-     * }catch(IOException error){
-     * System.out.printf("Erro, %s\n", error.getMessage());
-     * }
-     * }
-     */
-
     // MENU E AÇÕES DE MENU
     public int menu() throws Exception {
+        // Textinho
         System.out.println("\nSeja Bem-Vindo(a) a academia " + this.nome.toUpperCase() + "!!\n");
         System.out.println("Digite o que deseja fazer:\n");
         System.out.println("1 - Menu aluno");
@@ -136,19 +115,21 @@ public class Academia {
         System.out.println("3 - Matricular-se");
         System.out.println();
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // Scanner do swich case
         int escolha = input.nextInt();
 
+        // Menu principal
         switch (escolha) {
             case 1:
-                menuAluno();
+                menuAluno(); // Função pro menu aluno
                 return 1;
 
             case 2:
-                menuAcademia();
+                menuAcademia(); // Função pro menu academia
                 return 1;
 
             case 3:
+                // Matricula
                 System.out.println("Seja Bem-Vindo(a) futuro(a) monstro(a)!!!\n");
                 System.out.println("Digite seu nome:");
                 Scanner matriculaScanner = new Scanner(System.in);
@@ -161,7 +142,7 @@ public class Academia {
                 String email = matriculaScanner.nextLine();
                 System.out.println("Seu Telefone:");
                 int telefone = matriculaScanner.nextInt();
-                addAluno(nome, cpf, email, telefone);
+                addAluno(nome, cpf, email, telefone); // Insere o aluno
                 return 1;
             default:
                 System.out.println("\nOpção inválida!\n");
@@ -169,11 +150,13 @@ public class Academia {
         }
     }
 
+    // Menu aluno
     public void menuAluno() {
         System.out.println("\nPrimeiro, digite seu CPF:\n");
-        Scanner cpfScanner = new Scanner(System.in);
+        Scanner cpfScanner = new Scanner(System.in); // Scanner para o CPF
         int cpfAluno = cpfScanner.nextInt();
 
+        // Textinho
         System.out.println("\nMenu Aluno:\n");
         System.out.println("Olá, " + getAluno(cpfAluno).getNome());
         System.out.println("1 - Imprimir treino específico");
@@ -181,10 +164,12 @@ public class Academia {
         System.out.println("3 - Adicionar exercício a um treino");
         System.out.println();
 
+        // Scanner switch case
         Scanner std = new Scanner(System.in);
         int escolha1 = std.nextInt();
         switch (escolha1) {
             case 1:
+                // Printar os nomes dos treinos e índice
                 for (int i = 0; i < (getAluno(cpfAluno).getContagemTreino()); i++) {
                     System.out.println((i + 1) + " - " + getAluno(cpfAluno).getNomeTreinos(i));
                 }
@@ -200,7 +185,8 @@ public class Academia {
                 break;
 
             case 3:
-                printTreinos(cpfAluno);
+                printTreinos(cpfAluno); // Printa todos os treinos do aluno
+                // Pega todos os dados pro exercício
                 System.out.println("\nDeseja acrescentar em qual treino?\n");
                 int idTreino = std.nextInt();
                 System.out.println("Qual defina seu exercício:");
@@ -231,7 +217,9 @@ public class Academia {
         }
     }
 
+    // Menu academia
     public void menuAcademia() {
+        // Textos
         System.out.println("\nMenu Academia\n");
         System.out.println("1 - Imprimir todos os alunos");
         System.out.println("2 - Imprimir todas as máquinas");
@@ -240,23 +228,28 @@ public class Academia {
         System.out.println("5 - Adicionar máquina");
         System.out.println();
 
+        // Scanner switch case
         Scanner input2 = new Scanner(System.in);
         int escolha2 = input2.nextInt();
         switch (escolha2) {
             case 1:
+                // Printa todos os alunos
                 System.out.println("Alunos da academia");
                 printAlunos();
                 break;
             case 2:
+                // Printa todas as maquinas
                 System.out.println("Máquinas da academia:");
                 printMaquinas();
                 break;
             case 3:
+                // Remove aluno pelo CPF
                 Scanner cpfScanner = new Scanner(System.in);
                 int cpf = cpfScanner.nextInt();
                 removeAluno(cpf);
                 break;
             case 4:
+                // Remove máquina
                 System.out.println("Deseja remover qual máquina?");
                 maquinas.printTreeAll();
                 System.out.println("Nome da maquina:");
@@ -270,6 +263,7 @@ public class Academia {
                 removeMaquina(m);
                 break;
             case 5:
+                // Adiciona nova máquina
                 Scanner maqScanner2 = new Scanner(System.in);
                 String nm = maqScanner2.nextLine();
                 System.out.println("Tipo da maquina:");
@@ -283,6 +277,7 @@ public class Academia {
         }
     }
 
+    // Função estática para colocar os dados
     public static void baseDeTeste(Academia academia) {
         Treino t1 = new Treino("Peito e biceps");
         Treino t2 = new Treino("Costas");

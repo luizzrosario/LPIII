@@ -99,6 +99,7 @@ public class Tree<T extends Comparable<T>> {
         }
     }
 
+    // Pega nó pego valor
     public T getNode(T value) {
         T temp = removeNode(value);
         insertTree(temp);

@@ -15,7 +15,16 @@ public class Node<T> implements Serializable {
         this.prev = null;
     }
 
+    // Getters
     public T getData() {
         return this.data;
+    }
+
+    public Node<T> getNext() {
+        return this.next;
+    }
+
+    public Node<T> getPrev() {
+        return this.prev;
     }
 }
